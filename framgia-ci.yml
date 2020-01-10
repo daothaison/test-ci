@@ -7,10 +7,9 @@ build:
         image: redis:latest
     prepare:
       - cp .env.civ3.example .env
+      - echo 
       - composer install
       - php artisan config:clear
-      - framgia-ci test-connect mysql_test 3306 60
-      - php artisan migrate --database=mysql_test
       - framgia-ci run --logs
 test:
   phpcs:
